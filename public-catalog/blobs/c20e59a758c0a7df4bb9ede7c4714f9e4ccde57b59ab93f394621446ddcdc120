@@ -1,0 +1,10 @@
+Prova ModHub: Avvio diretto
+===========================
+
+Questa cartella l'ha installata ModHub dal suo catalogo pubblico.
+
+La mod aggiunge al pulsante GIOCA di ModHub il profilo "Avvio diretto":
+il gioco parte saltando la schermata con PLAY e va subito in partita.
+
+Il gioco non legge questo file (dalla cartella mods carica solo le DLL).
+Per togliere tutto: ModHub > Libreria > Prova ModHub > Disinstalla.
