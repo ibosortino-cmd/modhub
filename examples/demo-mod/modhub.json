@@ -1,0 +1,11 @@
+﻿{
+  "id": "bt3-demo-mod",
+  "name": "Mod di prova (per vedere gli aggiornamenti)",
+  "author": "ModHub demo",
+  "game": "bt3-recomp",
+  "version": "1.1.0",
+  "summary": "Installa solo file di testo innocui nella cartella mods, per provare installazione e aggiornamenti.",
+  "description": "Pacchetto dimostrativo: i file sono .txt, quindi il gioco li ignora. Installa la 1.0.0, poi premi Aggiorna per passare alla 1.1.0 e guarda che vengono scaricati solo i file cambiati.",
+  "changelog": "Aggiornato modhub-demo.txt, aggiunto modhub-demo-nuovo.txt, rimosso modhub-demo-vecchio.txt."
+}
+
