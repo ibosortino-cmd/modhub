@@ -14,6 +14,8 @@ Le impostazioni di ModHub restano in `%APPDATA%\ModHub`. Nella release c'è anch
 
 ModHub non contiene giochi e non è affiliato agli autori dei giochi o dei port che gestisce.
 
+**Consigli e segnalazioni**: [Issues](https://github.com/ibosortino-cmd/modhub/issues) (c'è già un modulo "Consiglio o segnalazione" da compilare), oppure dall'app: Informazioni → *Lascia un consiglio*.
+
 > **Versione demo.** ModHub è un prototipo: alcune parti vanno ancora riviste e possono esserci errori.
 > **I consigli sono benvenuti, anzi richiesti**: cosa non è chiaro, cosa non funziona, cosa manca, quale gioco o mod
 > vorresti vedere. Ogni segnalazione aiuta la prossima versione.
