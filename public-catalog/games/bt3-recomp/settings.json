@@ -1,0 +1,187 @@
+{
+  "file": "savedata/settings.toml",
+  "ownOverlay": "Shift+Tab",
+  "ownOverlayNote": "Puoi usare anche il menu del gioco: ModHub e il gioco condividono le stesse impostazioni.",
+  "restartEnv": {"PS2X_FE_DELAY_MS": "1", "PS2X_FE_AUTOPLAY": "1"},
+  "memoryLive": "ps2x",
+  "optimizer": {
+    "byTier": [1, 2, 3, 4, 5],
+    "levels": [
+      {"name": "Prestazioni massime", "desc": "Per PC molto datati o portatili: massima fluidità, grafica semplificata.",
+       "values": {"video.render_scale": 1, "video.shadows": false, "video.glow": false, "video.dof_blur": false, "video.texture_pack": false, "video.fps60": false}},
+      {"name": "Prestazioni", "desc": "Fluido anche su PC modesti, con le ombre attive.",
+       "values": {"video.render_scale": 1, "video.shadows": true, "video.glow": false, "video.dof_blur": false, "video.texture_pack": true, "video.fps60": false}},
+      {"name": "Bilanciato", "desc": "Il giusto compromesso: immagine nitida (2x) con bagliore e ombre.",
+       "values": {"video.render_scale": 2, "video.shadows": true, "video.glow": true, "video.dof_blur": false, "video.texture_pack": true, "video.fps60": false}},
+      {"name": "Qualità", "desc": "Immagine molto nitida (3x) e 60 FPS per un gioco più fluido.",
+       "values": {"video.render_scale": 3, "video.shadows": true, "video.glow": true, "video.dof_blur": false, "video.texture_pack": true, "video.fps60": true}},
+      {"name": "Qualità massima", "desc": "Tutto attivo, anche la sfocatura di profondità: per PC potenti.",
+       "values": {"video.render_scale": 3, "video.shadows": true, "video.glow": true, "video.dof_blur": true, "video.texture_pack": true, "video.fps60": true}}
+    ]
+  },
+  "groups": [
+    {
+      "id": "audio", "title": "Audio", "icon": "volume",
+      "sections": [
+        {
+          "title": "Volume",
+          "fields": [
+            {"key": "audio.master_volume", "label": "Volume generale", "desc": "Controlla tutto l'audio del gioco.", "type": "slider", "min": 0, "max": 1, "step": 0.01, "percent": true, "default": 1},
+            {"key": "audio.music_volume", "label": "Musica", "desc": "Colonna sonora dei combattimenti e dei menu.", "type": "slider", "min": 0, "max": 1, "step": 0.01, "percent": true, "default": 1},
+            {"key": "audio.sfx_volume", "label": "Effetti sonori", "desc": "Colpi, mosse speciali e voci dei personaggi.", "type": "slider", "min": 0, "max": 1, "step": 0.01, "percent": true, "default": 1},
+            {"key": "frontend.music_muted", "label": "Silenzia la musica dei menu", "desc": "Spegne solo la musica del menu iniziale.", "type": "toggle", "default": false}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "screen", "title": "Schermo", "icon": "monitor",
+      "sections": [
+        {
+          "title": "Finestra",
+          "fields": [
+            {"key": "video.window_mode", "label": "Modalità di visualizzazione", "desc": "Come si apre il gioco.", "type": "select", "default": 2,
+             "options": [{"value": 0, "label": "Finestra"}, {"value": 1, "label": "Finestra senza bordi"}, {"value": 2, "label": "Schermo intero"}],
+             "sync": [{"key": "video.fullscreen", "equals": 2}]},
+            {"key": "video.window_w", "label": "Larghezza finestra", "desc": "Usata quando il gioco è in finestra.", "type": "number", "int": true, "min": 320, "max": 7680, "step": 10, "unit": "px", "default": 1366},
+            {"key": "video.window_h", "label": "Altezza finestra", "desc": "Usata quando il gioco è in finestra.", "type": "number", "int": true, "min": 240, "max": 4320, "step": 10, "unit": "px", "default": 768},
+            {"key": "video.monitor", "label": "Monitor", "desc": "Numero dello schermo su cui aprire il gioco (0 = principale).", "type": "number", "int": true, "min": 0, "max": 16, "step": 1, "default": 0}
+          ]
+        },
+        {
+          "title": "Immagine",
+          "fields": [
+            {"key": "video.widescreen", "label": "Widescreen 16:9", "desc": "Allarga l'immagine a tutto lo schermo invece del 4:3 originale.", "type": "toggle", "default": true},
+            {"key": "video.render_scale", "label": "Risoluzione di rendering", "desc": "Più alta significa immagine più nitida, ma più lavoro per la scheda video. Con il renderer Vulkan nativo o OpenGL si applica al riavvio del gioco.", "type": "select", "default": 2,
+             "options": [{"value": 1, "label": "Nativa (1x)"}, {"value": 2, "label": "Doppia (2x)"}, {"value": 3, "label": "Tripla (3x)"}]},
+            {"key": "video.fps60", "label": "60 FPS", "desc": "Rende il gioco più fluido rispetto ai 30 FPS originali.", "type": "toggle", "default": false},
+            {"key": "video.show_perf", "label": "Mostra il contatore delle prestazioni", "desc": "Piccola scritta con FPS e carico durante il gioco.", "type": "toggle", "default": false}
+          ]
+        },
+        {
+          "title": "Renderer",
+          "fields": [
+            {"key": "video.renderer", "label": "Renderer", "desc": "Il motore che disegna il gioco. Si applica al riavvio del gioco.", "type": "select", "default": "native",
+             "options": [{"value": "native", "label": "Vulkan nativo"}, {"value": "opengl", "label": "OpenGL"}, {"value": "software", "label": "Software (solo CPU, lento)"}]}
+          ]
+        },
+        {
+          "title": "Informazioni",
+          "fields": [
+            {"key": "video.gpu", "label": "Scheda video", "type": "info"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "graphics", "title": "Grafica", "icon": "sparkles",
+      "presets": [
+        {"name": "Prestazioni", "desc": "Per PC modesti", "values": {"video.render_scale": 1, "video.shadows": false, "video.dof_blur": false, "video.glow": false}},
+        {"name": "Bilanciato", "desc": "Consigliato", "values": {"video.render_scale": 2, "video.shadows": true, "video.dof_blur": false, "video.glow": true}},
+        {"name": "Qualità", "desc": "Per PC potenti", "values": {"video.render_scale": 3, "video.shadows": true, "video.dof_blur": true, "video.glow": true}}
+      ],
+      "sections": [
+        {
+          "title": "Effetti",
+          "fields": [
+            {"key": "video.glow", "label": "Bagliore", "desc": "Aura luminosa attorno a mosse ed energia.", "type": "toggle", "default": true},
+            {"key": "video.shadows", "label": "Ombre", "desc": "Ombre dei personaggi sul terreno.", "type": "toggle", "default": true},
+            {"key": "video.dof_blur", "label": "Sfocatura di profondità", "desc": "Sfoca lo sfondo lontano.", "type": "toggle", "default": false},
+            {"key": "video.dof_zfar", "label": "Distanza della sfocatura", "desc": "Più bassa = la sfocatura arriva più vicino alla telecamera. 200000 è come su console.", "type": "slider", "int": true, "min": 50000, "max": 400000, "step": 1000, "default": 200000},
+            {"key": "video.bilinear", "label": "Filtro bilineare", "desc": "Ammorbidisce le texture (renderer OpenGL).", "type": "toggle", "default": true},
+            {"key": "video.texture_pack", "label": "Texture HD", "desc": "Usa il pacchetto di texture migliorate, se installato.", "type": "toggle", "default": true}
+          ]
+        },
+        {
+          "title": "Contorni dei personaggi",
+          "fields": [
+            {"key": "video.outline", "label": "Contorni", "desc": "Linea scura attorno ai personaggi, in stile cartone.", "type": "toggle", "default": true},
+            {"key": "video.ink_strength", "label": "Intensità dei contorni", "desc": "199% è come la linea della console; più alto = più scura.", "type": "slider", "int": true, "min": 100, "max": 400, "step": 1, "unit": "%", "default": 199},
+            {"key": "video.ink_width", "label": "Spessore dei contorni", "desc": "100% = la linea di un pixel della console; più basso = più sottile (solo renderer paraLLEl-GS).", "type": "slider", "int": true, "min": 25, "max": 100, "step": 1, "unit": "%", "default": 100},
+            {"key": "video.ink_color", "label": "Colore dei contorni", "desc": "Formato #RRGGBB, #000000 = nero come nel gioco (renderer Vulkan nativo).", "type": "text", "pattern": "#[0-9A-Fa-f]{6}", "placeholder": "#000000", "default": "#000000"}
+          ]
+        },
+        {
+          "title": "Opzioni tecniche",
+          "note": "Cambiale solo se sai cosa fai o se ti viene chiesto da chi ha creato il port.",
+          "fields": [
+            {"key": "video.glowfix", "label": "Bagliore Kaioken (aura)", "desc": "Aura e bagliore di personaggi e attacchi (renderer OpenGL). Si applica al riavvio.", "type": "toggle", "default": true},
+            {"key": "video.halftexel", "label": "Correzione half-texel", "type": "toggle", "default": true},
+            {"key": "video.force_bilinear", "label": "Forza il filtro (terreno più morbido)", "type": "toggle", "default": true},
+            {"key": "video.skippost", "label": "Salta il post-processing", "type": "toggle", "default": true},
+            {"key": "video.skip_stale_vram", "label": "Salta la VRAM obsoleta", "type": "toggle", "default": true}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "interface", "title": "Interfaccia", "icon": "layout",
+      "sections": [
+        {
+          "title": "Pulsanti e introduzione",
+          "fields": [
+            {"key": "video.button_layout", "label": "Stile dei pulsanti", "desc": "Icone dei pulsanti mostrate nei menu (con il pacchetto texture). Si applica al riavvio.", "type": "select", "default": 1,
+             "options": [{"value": 0, "label": "Stile PS2"}, {"value": 1, "label": "Stile Xbox"}]},
+            {"key": "video.intro_video", "label": "Video introduttivo 4K", "desc": "Filmato iniziale in 4K dal pacchetto texture. Si applica al riavvio.", "type": "toggle", "default": true}
+          ]
+        },
+        {
+          "title": "Posizione dell'HUD",
+          "note": "Dove stanno le barre dell'energia con lo schermo largo (serve Widescreen attivo).",
+          "fields": [
+            {"key": "video.hud.layout", "label": "Disposizione dell'HUD", "type": "select", "default": 0,
+             "options": [{"value": 0, "label": "Centrato (blocco 4:3)"}, {"value": 1, "label": "Ai bordi dello schermo"}, {"value": 2, "label": "Personalizzato (cursori)"}]},
+            {"key": "video.hud.offset_left", "label": "Gruppo sinistro", "desc": "Solo con la disposizione Personalizzata.", "type": "slider", "int": true, "min": -120, "max": 120, "step": 1, "unit": "px", "default": 0},
+            {"key": "video.hud.offset_center", "label": "Timer", "desc": "Solo con la disposizione Personalizzata.", "type": "slider", "int": true, "min": -120, "max": 120, "step": 1, "unit": "px", "default": 0},
+            {"key": "video.hud.offset_right", "label": "Gruppo destro", "desc": "Solo con la disposizione Personalizzata.", "type": "slider", "int": true, "min": -120, "max": 120, "step": 1, "unit": "px", "default": 0}
+          ]
+        },
+        {
+          "title": "Extra",
+          "fields": [
+            {"key": "netplay.overlay", "label": "Etichetta del gioco online", "desc": "Riquadro in un angolo durante le partite online.", "type": "toggle", "default": true},
+            {"key": "achievements.enabled", "label": "Obiettivi locali", "desc": "Tracker degli obiettivi RetroAchievements: funziona solo sul tuo PC e non contatta nessun server.", "type": "toggle", "default": true}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "controller", "title": "Controller", "icon": "gamepad",
+      "sections": [
+        {
+          "title": "Sensibilità e vibrazione",
+          "fields": [
+            {"key": "controllers.deadzone", "label": "Zona morta degli stick", "desc": "Ignora i piccoli movimenti: alzala se il personaggio si muove da solo.", "type": "slider", "min": 0, "max": 0.5, "step": 0.01, "percent": true, "default": 0.15},
+            {"key": "controllers.rumble", "label": "Vibrazione", "type": "toggle", "default": true},
+            {"key": "controllers.rumble_strength", "label": "Intensità della vibrazione", "desc": "100% = la forza originale del gioco.", "type": "slider", "int": true, "min": 0, "max": 200, "step": 1, "unit": "%", "default": 100},
+            {"key": "controllers.overlay_enabled", "label": "Menu del gioco (Shift+Tab)", "desc": "Se spento, il menu delle impostazioni interno del gioco non si apre più.", "type": "toggle", "default": true}
+          ]
+        },
+        {
+          "title": "Assegnazione dei tasti",
+          "note": "I tasti di tastiera e controller si cambiano dal menu delle impostazioni dentro il gioco.",
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "advanced", "title": "Mod e avanzate", "icon": "sliders",
+      "sections": [
+        {
+          "title": "Mod",
+          "fields": [
+            {"key": "mods.enabled", "label": "Carica le mod", "desc": "Se spento, il gioco ignora tutte le DLL nella cartella mods.", "type": "toggle", "default": true},
+            {"key": "mods.disabled", "label": "Mod disattivate", "desc": "File da saltare all'avvio, separati da virgola.", "type": "text", "placeholder": "nome1, nome2", "default": ""}
+          ]
+        },
+        {
+          "title": "Diagnostica",
+          "fields": [
+            {"key": "logging.log_level", "label": "Livello del log", "desc": "Quante informazioni scrive il gioco nei file di log. Utile solo per segnalare problemi.", "type": "select", "default": 0,
+             "options": [{"value": 0, "label": "0 · Minimo"}, {"value": 1, "label": "1"}, {"value": 2, "label": "2"}, {"value": 3, "label": "3 · Massimo"}]}
+          ]
+        }
+      ]
+    }
+  ]
+}
