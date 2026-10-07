@@ -1,0 +1,27 @@
+{
+  "versions": {
+    "1.0.0": {
+      "date": "2026-10-06",
+      "changelog": "Prima versione.",
+      "files": [],
+      "launch_profiles": [
+        {
+          "name": "Grafica 8x",
+          "env": {
+            "PS2X_SEAMVK": "1",
+            "PS2X_PGS": "0",
+            "PS2X_SEAMVK_SCALE": "8",
+            "PS2X_SEAMVK_OUTSCALE": "8"
+          }
+        }
+      ]
+    }
+  },
+  "id": "bt3-graphics-8x",
+  "name": "Grafica 8x (profilo di avvio)",
+  "author": "ModHub demo",
+  "game": "bt3-recomp",
+  "summary": "Avvia BT3 con il rendering a risoluzione 8x, come \"Avvia BT3 8x.cmd\".",
+  "description": "Non copia nessun file: aggiunge al pulsante GIOCA il profilo \"Grafica 8x\", che imposta le variabili PS2X_SEAMVK, PS2X_PGS, PS2X_SEAMVK_SCALE e PS2X_SEAMVK_OUTSCALE.",
+  "latest": "1.0.0"
+}
