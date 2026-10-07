@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<title>ModHub - Guida (demo)</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 16mm 15mm; }
+  :root { --ink: #151b26; --muted: #5b6577; --green: #16a34a; --green-bg: #ecfdf3; --amber-bg: #fff7e6; --amber: #b45309; --line: #e3e7ee; }
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Arial, sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.5; margin: 0; }
+  h1 { font-size: 26pt; margin: 0 0 4px; letter-spacing: -0.5px; }
+  h2 { font-size: 15pt; margin: 0 0 6px; padding-top: 2px; border-bottom: 2px solid var(--green); padding-bottom: 4px; }
+  h3 { font-size: 11.5pt; margin: 14px 0 4px; }
+  p { margin: 6px 0; }
+  ul { margin: 6px 0 6px 18px; padding: 0; }
+  li { margin: 2px 0; }
+  .muted { color: var(--muted); }
+  .cover { height: 250mm; display: flex; flex-direction: column; justify-content: center; page-break-after: always; }
+  .logo { width: 64px; height: 64px; border-radius: 16px; background: #22c55e; color: #fff; font-size: 34pt; font-weight: 700;
+          display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+  .tag { display: inline-block; font-size: 9pt; font-weight: 700; letter-spacing: 1px; color: var(--green); text-transform: uppercase; }
+  .lead { font-size: 13pt; color: #2a3342; max-width: 150mm; }
+  .box { border-radius: 10px; padding: 10px 14px; margin: 10px 0; }
+  .demo { background: var(--amber-bg); border: 1px solid #f5d08a; }
+  .demo b { color: var(--amber); }
+  .tip { background: var(--green-bg); border: 1px solid #b7ebcb; }
+  section { page-break-before: always; }
+  section.flow { page-break-before: auto; margin-top: 18px; }
+  figure { margin: 10px 0; text-align: center; page-break-inside: avoid; }
+  figure img { max-width: 100%; border-radius: 8px; border: 1px solid var(--line); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  figcaption { font-size: 9pt; color: var(--muted); margin-top: 4px; }
+  .pair { display: flex; gap: 12px; justify-content: center; page-break-inside: avoid; }
+  .pair figure { flex: 0 0 auto; }
+  .pair img { width: 72mm; }
+  .side { display: flex; gap: 14px; align-items: flex-start; page-break-inside: avoid; }
+  .side figure { flex: 0 0 72mm; margin-top: 4px; }
+  .side figure img { width: 72mm; }
+  .side .text { flex: 1; }
+  .k { display: inline-block; border: 1px solid #c8cfdb; border-bottom-width: 2px; border-radius: 5px; padding: 0 5px; font-size: 9pt; font-weight: 600; background: #f6f8fb; }
+  table { border-collapse: collapse; width: 100%; font-size: 9.5pt; margin: 6px 0; }
+  td, th { border: 1px solid var(--line); padding: 5px 7px; vertical-align: top; text-align: left; }
+  th { background: #f4f6f9; }
+  .toc li { margin: 3px 0; }
+  code { font-family: Consolas, monospace; font-size: 9pt; background: #f2f4f7; padding: 0 3px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="logo">M</div>
+  <span class="tag">Guida · versione demo</span>
+  <h1>ModHub</h1>
+  <p class="lead">Un’unica app per i giochi “fatti dalla comunità”: port per PC, mod, patch ed emulatori.
+    Come una piccola Steam, ma per le mod: le trovi, le installi con un clic e restano aggiornate.</p>
+  <div class="box demo"><b>Questa è una demo.</b> ModHub è un prototipo: alcune parti vanno ancora riviste e possono esserci
+    errori. Fai una copia dei tuoi salvataggi prima di provare cose nuove.</div>
+  <div class="box tip"><b>I consigli sono benvenuti, anzi richiesti.</b> Cosa non è chiaro, cosa non funziona, cosa manca, quale gioco o
+    mod vorresti vedere: ogni segnalazione aiuta la prossima versione. Nell’app trovi il pulsante <i>Lascia un consiglio</i>
+    nella sezione <b>Informazioni</b>.</div>
+  <h3>In questa guida</h3>
+  <ol class="toc">
+    <li>A cosa serve ModHub</li>
+    <li>La Libreria e il pulsante GIOCA</li>
+    <li>Installare, aggiornare e togliere una mod</li>
+    <li>Aggiungere i tuoi giochi</li>
+    <li>Impostazioni del gioco e “Ottimizza per il tuo PC”</li>
+    <li>Emulatori</li>
+    <li>Il promemoria all’avvio</li>
+    <li>Il pannello in gioco</li>
+    <li>Per chi crea mod: il catalogo</li>
+    <li>Sicurezza, limiti della demo e consigli</li>
+  </ol>
+  <p class="muted" style="margin-top:auto">Ottobre 2026 · gli screenshot sono presi dall’app su Windows 11.</p>
+</div>
+
+<section>
+  <h2>1 · A cosa serve ModHub</h2>
+  <p>Molti giochi vivono grazie alla comunità: port per PC fatti dai fan, mod, traduzioni, texture HD, giochi per vecchie console
+    che si giocano con un emulatore. Di solito vuol dire cercare file in giro, copiarli nelle cartelle giuste, modificare file di
+    configurazione e ricominciare da capo a ogni aggiornamento. <b>ModHub mette tutto in un posto solo.</b></p>
+  <ul>
+    <li><b>Libreria</b>: port per PC, giochi scaricati e giochi per emulatore, ognuno con il suo pulsante GIOCA.</li>
+    <li><b>Mod con un clic</b>: installi, aggiorni o togli mod e patch dal catalogo; ModHub controlla ogni file scaricato.</li>
+    <li><b>Aggiornamenti</b>: quando un autore pubblica una nuova versione compare “Aggiorna”, con le novità scritte in chiaro.</li>
+    <li><b>Impostazioni semplici</b>: grafica, audio e comandi con interruttori e cursori, senza aprire file di testo.</li>
+    <li><b>Ottimizza per il tuo PC</b>: riconosce la scheda video e propone il livello giusto, come fa il pannello NVIDIA.</li>
+    <li><b>Emulatori</b>: li scarica, li imposta e avvia i giochi con quello giusto.</li>
+    <li><b>Pannello in gioco</b>: durante la partita premi <span class="k">Ctrl</span>+<span class="k">Shift</span>+<span class="k">Tab</span>
+      e cambi le impostazioni mentre giochi.</li>
+  </ul>
+  <figure><img src="img/06_informazioni.png"><figcaption>La sezione <b>Informazioni</b>: cos’è ModHub, l’avviso “demo” e il pulsante per lasciare un consiglio.</figcaption></figure>
+</section>
+
+<section>
+  <h2>2 · La Libreria e il pulsante GIOCA</h2>
+  <figure><img src="img/01_libreria.png"><figcaption>La Libreria con Dragon Ball Z: Budokai Tenkaichi 3 (port per PC) e la mod di prova installata.</figcaption></figure>
+  <table>
+    <tr><th style="width:34%">Dove</th><th>Cosa fa</th></tr>
+    <tr><td><b>I tuoi giochi</b> (a sinistra)</td><td>Tutti i tuoi giochi. Il pallino verde vuol dire “trovato e pronto”.</td></tr>
+    <tr><td><b>GIOCA</b></td><td>Avvia il gioco. Da qui ModHub sa che stai giocando e attiva il pannello in gioco.</td></tr>
+    <tr><td><b>Profilo di avvio</b></td><td>Modi diversi di avviare lo stesso gioco, aggiunti dalle mod (per esempio “Avvio diretto”, che salta il menu iniziale).</td></tr>
+    <tr><td><b>Cambia cartella</b></td><td>Indica dove si trova il gioco sul PC.</td></tr>
+    <tr><td><b>Tutti / Installati / Aggiornamenti</b></td><td>Filtrano le mod del catalogo; il numero arancione indica quante hanno una nuova versione.</td></tr>
+    <tr><td><b>Pannello in gioco</b> (in basso a sinistra)</td><td>Scegli i tasti che aprono il pannello durante la partita (di partenza <span class="k">Ctrl</span>+<span class="k">Shift</span>+<span class="k">Tab</span>).</td></tr>
+    <tr><td><b>Catalogo · Cambia sorgente</b></td><td>Da dove ModHub prende l’elenco delle mod: una cartella o un indirizzo web.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>3 · Installare, aggiornare e togliere una mod</h2>
+  <p>Clicca una mod per aprire la sua scheda.</p>
+  <figure><img src="img/02_scheda_mod.png"><figcaption>La scheda di una mod: descrizione, versioni, novità e file.</figcaption></figure>
+  <ul>
+    <li><b>Installa / Aggiorna</b>: scarica la versione scelta, controlla che ogni file sia identico a quello pubblicato (impronta SHA-256) e lo copia nella cartella del gioco.</li>
+    <li><b>Versione</b>: puoi anche tornare a una versione precedente. <b>Verifica / ripara</b> rimette a posto i file se qualcosa è stato cancellato.</li>
+    <li><b>Novità</b>: cosa cambia in ogni versione, scritto dall’autore.</li>
+    <li><b>File della versione</b>: l’elenco esatto di cosa viene copiato. I programmi (.exe, .dll…) sono segnalati con ⚠ e ModHub chiede conferma prima di installarli.</li>
+    <li><b>Disinstalla</b>: toglie i file della mod e rimette quelli originali che aveva sostituito.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>4 · Aggiungere i tuoi giochi</h2>
+  <p>Con <b>Aggiungi gioco</b> (sotto l’elenco dei giochi) scegli il programma (.exe) di un gioco che hai già sul PC e gli dai un nome:
+    compare nella Libreria con il suo pulsante GIOCA e la sua icona.</p>
+  <p>Per i giochi di altre console (ISO o ROM) usa <b>Aggiungi gioco</b> nella pagina <b>Emulatori</b>: ModHub riconosce la console
+    dal file e lo associa all’emulatore giusto.</p>
+  <div class="box tip">Se il gioco è già nel catalogo (come BT3 per PC), ModHub lo collega da solo e ti offre subito mod e impostazioni.</div>
+
+  <h2 style="margin-top:22px">5 · Impostazioni del gioco e “Ottimizza per il tuo PC”</h2>
+  <figure><img src="img/03_impostazioni.png"><figcaption>Le impostazioni di BT3 per PC: in alto l’ottimizzazione, sotto le schede Audio, Schermo, Grafica, Interfaccia, Controller, Mod e avanzate.</figcaption></figure>
+  <ul>
+    <li><b>Ottimizza per il tuo PC</b>: ModHub mostra scheda video, processore e memoria, e consiglia un livello. Sposti il cursore tra
+      <i>Prestazioni</i> e <i>Qualità</i>, vedi cosa cambierebbe e premi <b>Applica</b>.</li>
+    <li><b>Schede</b>: tutte le opzioni del gioco con interruttori, cursori e menu, ognuna con una spiegazione.</li>
+    <li><b>Salva</b> compare in basso quando cambi qualcosa. <b>Ripristina l’originale</b> riporta il file com’era prima di ModHub (viene sempre tenuta una copia).</li>
+  </ul>
+</section>
+
+<section>
+  <h2>6 · Emulatori</h2>
+  <figure><img src="img/04_emulatori.png" style="max-height:98mm"><figcaption>Gli emulatori inclusi: PCSX2 (PS2), DuckStation (PS1), RPCS3 (PS3), PPSSPP (PSP), Dolphin (GameCube/Wii), Cemu (Wii U) e altri.</figcaption></figure>
+  <ul>
+    <li><b>Scarica e installa</b>: ModHub prende l’ultima versione dal sito ufficiale dell’emulatore, la controlla e la installa.</li>
+    <li><b>Rileva sul PC</b> / <b>Percorso…</b>: se l’emulatore ce l’hai già, ModHub lo trova o glielo indichi tu.</li>
+    <li><b>Aggiungi gioco</b>: scegli la ISO/ROM; il gioco va nella Libreria e si avvia con l’emulatore giusto.</li>
+    <li><b>Cerca aggiornamenti</b>: controlla se c’è una versione più nuova degli emulatori scaricati da ModHub.</li>
+    <li>Alcune console richiedono il <b>BIOS</b>, che non è incluso: va preso dalla propria console.</li>
+  </ul>
+  <figure><img src="img/05_impostazioni_pcsx2.png" style="max-height:98mm"><figcaption>Le impostazioni di PCSX2 (motore PS2) dentro ModHub, con la stessa ottimizzazione.</figcaption></figure>
+</section>
+
+<section>
+  <h2>7 · Il promemoria all’avvio</h2>
+  <div class="side">
+    <div class="text">
+      <p>Quando avvii un gioco da ModHub e la sua finestra compare, in alto a destra appare per <b>30 secondi</b> un piccolo
+        promemoria con i tasti per aprire il pannello. La barra verde mostra il tempo che resta; la <b>✕</b> lo chiude subito.</p>
+      <p>Non prende la tastiera al gioco e sparisce da solo se apri il pannello o chiudi il gioco.</p>
+    </div>
+    <figure><img src="img/10_promemoria.png"><figcaption>Il promemoria.</figcaption></figure>
+  </div>
+
+  <h2 style="margin-top:22px">8 · Il pannello in gioco</h2>
+  <p>Durante la partita premi <span class="k">Ctrl</span>+<span class="k">Shift</span>+<span class="k">Tab</span>: si apre un piccolo pannello
+    in basso a destra, sopra il gioco. Premi di nuovo gli stessi tasti, <span class="k">Esc</span> o la ✕ per chiuderlo; la tastiera torna al gioco.
+    Il pannello è pronto già da quando parte il gioco, quindi compare subito.</p>
+  <div class="pair">
+    <figure><img src="img/07_pannello_bt3.png"><figcaption>BT3 per PC: in alto ciò che aspetta il riavvio.</figcaption></figure>
+    <figure><img src="img/08_pannello_bt3_grafica.png"><figcaption>“Tutte le impostazioni”, gruppo Grafica.</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <h3>Cosa c’è nel pannello</h3>
+  <table>
+    <tr><th style="width:30%">Parte</th><th>Cosa fa</th></tr>
+    <tr><td><b>● subito</b></td><td>Le impostazioni con questo segno cambiano mentre giochi: audio, controller, contorni, ombre, sfocatura, 60 FPS, contatore FPS, texture HD, HUD… Mentre trascini un volume lo senti già cambiare.</td></tr>
+    <tr><td><b>In attesa · Riavvia e applica</b></td><td>Poche cose il gioco le prepara solo all’avvio (renderer, risoluzione di rendering, bagliore Kaioken, finestra, video iniziale, stile dei pulsanti). ModHub le salva; con <b>Riavvia e applica</b> chiude il gioco in modo pulito e lo riapre direttamente in partita (dopo una conferma: la partita in corso si interrompe, i salvataggi no).</td></tr>
+    <tr><td><b>Dal vivo · Apri il menu del gioco</b></td><td>BT3 per PC ha anche un suo menu (Shift+Tab): questo pulsante lo apre per te. ModHub e il gioco condividono le stesse impostazioni.</td></tr>
+    <tr><td><b>Audio</b></td><td>Volume generale, musica ed effetti separati.</td></tr>
+    <tr><td><b>Ottimizza per il tuo PC</b></td><td>Lo stesso cursore della finestra principale, utilizzabile in partita.</td></tr>
+    <tr><td><b>Tutte le impostazioni</b></td><td>Ogni opzione del gioco, divisa per gruppi: se ne apre uno alla volta.</td></tr>
+  </table>
+  <div class="side" style="margin-top:12px">
+    <div class="text">
+      <h3>Con un emulatore (esempio: PCSX2)</h3>
+      <p>Per i giochi PS2 la parte <b>In tempo reale</b> comanda direttamente l’emulatore: risoluzione con − e +, precisione dei colori,
+        volume, formato dell’immagine, mipmap, e in “Altro” filtro TV e deinterlacciamento. Il valore mostrato è quello che PCSX2 conferma,
+        in qualsiasi lingua sia impostato.</p>
+      <p>Il resto viene salvato e applicato quando chiudi il gioco. Se il gioco ha un suo profilo di impostazioni in PCSX2, ModHub lo tiene allineato.</p>
+    </div>
+    <figure><img src="img/09_pannello_pcsx2.png"><figcaption>Il pannello con un gioco PS2.</figcaption></figure>
+  </div>
+</section>
+
+<section>
+  <h2>9 · Per chi crea mod: il catalogo</h2>
+  <p>Il catalogo è una semplice cartella (o un sito, per esempio un repository GitHub) con l’elenco dei progetti, le loro versioni e i
+    file. Non contiene giochi: solo mod, patch, profili di avvio e la descrizione delle impostazioni.</p>
+  <ol>
+    <li>Prepara una cartella con <code>modhub.json</code> (nome, autore, gioco, versione, descrizione, novità, eventuali profili di avvio) e una
+      sottocartella <code>files/</code> con i file da copiare nel gioco, con gli stessi percorsi.</li>
+    <li>Pubblica nel catalogo: <code>python publish.py &lt;cartella-mod&gt; --catalog public-catalog</code>.</li>
+    <li>Mettilo online: <code>python catalog_upload.py &lt;utente&gt;/&lt;repository&gt;</code> (invia solo i file nuovi o cambiati).</li>
+    <li>Per ogni nuova versione aumenta <code>version</code> in <code>modhub.json</code> e ripeti: chi ha la mod vedrà <b>Aggiorna</b>.</li>
+  </ol>
+  <div class="box tip">La mod di prova <b>“Prova ModHub: Avvio diretto”</b> è un esempio completo: aggiunge il profilo “Avvio diretto” a GIOCA e un file di testo in <code>mods\modhub-prova</code>.</div>
+
+  <h2 style="margin-top:22px">10 · Sicurezza, limiti della demo e consigli</h2>
+  <h3>Come ModHub protegge il tuo PC e i tuoi giochi</h3>
+  <ul>
+    <li>Ogni file scaricato viene confrontato con la sua impronta SHA-256: se non coincide, non viene installato.</li>
+    <li>Le mod possono scrivere solo dentro la cartella del gioco; i programmi vengono segnalati e servono conferma.</li>
+    <li>Prima di cambiare un file di impostazioni ModHub ne tiene una copia (<i>Ripristina l’originale</i>).</li>
+    <li>Gli emulatori vengono scaricati solo dai siti ufficiali.</li>
+    <li>Il catalogo non distribuisce giochi: ognuno usa la propria copia.</li>
+  </ul>
+  <h3>Limiti noti (è una demo)</h3>
+  <ul>
+    <li>Funziona solo su Windows.</li>
+    <li>Le modifiche “subito” di BT3 per PC sono fatte per la versione attuale del port: con versioni diverse ModHub non scrive nulla e le applica al riavvio.</li>
+    <li>Su uno schermo intero “esclusivo” Windows può nascondere il pannello: meglio finestra o schermo intero senza bordi.</li>
+    <li>Il catalogo contiene per ora solo la mod di prova.</li>
+  </ul>
+  <div class="box tip"><b>Consigli benvenuti.</b> Scrivi cosa ti è piaciuto, cosa non funziona e cosa vorresti: nell’app, sezione
+    <b>Informazioni</b> → <i>Lascia un consiglio</i>.</div>
+</section>
+
+</body>
+</html>
