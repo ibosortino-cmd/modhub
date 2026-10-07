@@ -1,0 +1,26 @@
+{
+  "name": "ModHub - catalogo pubblico",
+  "feedback": "https://github.com/ibosortino-cmd/modhub-catalogo/issues",
+  "games": {
+    "bt3-recomp": {
+      "name": "Dragon Ball Z: Budokai Tenkaichi 3 (PC Recompiled)",
+      "exe": "Dragon Ball Z Budokai Tenkaichi 3 - Recompiled.exe",
+      "settings": "games/bt3-recomp/settings.json",
+      "version_file": {
+        "file": "LEGGIMI.txt",
+        "regex": "Versione sorgente:\\s*(\\w{7})"
+      }
+    }
+  },
+  "projects": [
+    {
+      "id": "bt3-prova-modhub",
+      "name": "Prova ModHub: Avvio diretto",
+      "author": "ModHub",
+      "game": "bt3-recomp",
+      "summary": "Mod di prova: aggiunge il profilo \"Avvio diretto\" che salta il menu iniziale e porta subito in partita.",
+      "latest": "1.0.0",
+      "manifest": "projects/bt3-prova-modhub/manifest.json"
+    }
+  ]
+}
