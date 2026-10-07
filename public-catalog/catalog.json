@@ -1,6 +1,6 @@
 {
   "name": "ModHub - catalogo pubblico",
-  "feedback": "https://github.com/ibosortino-cmd/modhub-catalogo/issues",
+  "feedback": "https://github.com/ibosortino-cmd/modhub/issues/new?template=consiglio.md",
   "games": {
     "bt3-recomp": {
       "name": "Dragon Ball Z: Budokai Tenkaichi 3 (PC Recompiled)",
