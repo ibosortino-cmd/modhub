@@ -5,7 +5,7 @@
 > vorresti vedere. Ogni segnalazione aiuta la prossima versione.
 
 ModHub è un’app per Windows che installa e aggiorna con un clic mod, patch e profili per i giochi della comunità (port per PC ed emulatori), e permette di cambiarne le impostazioni anche durante la partita.
-I consigli si lasciano nella sezione **Issues** di questo repository.
+I consigli si lasciano nelle **[Issues di ModHub](https://github.com/ibosortino-cmd/modhub/issues)** (nell'app: Informazioni → *Lascia un consiglio*).
 
 Questo repository è il catalogo che ModHub legge per mostrare mod, patch e profili da installare con un clic.
 Non contiene giochi: ognuno usa la propria copia (per BT3 Recompiled: il port dal progetto ufficiale
