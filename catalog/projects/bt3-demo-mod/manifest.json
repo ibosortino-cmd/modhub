@@ -1,0 +1,55 @@
+{
+  "versions": {
+    "1.0.0": {
+      "date": "2026-10-06",
+      "changelog": "Prima versione.",
+      "files": [
+        {
+          "path": "mods/modhub-demo-invariato.txt",
+          "sha256": "9b54dc84e9d9e1ff90571c49953ea0c28d5e74f511346650ea65ba508cf2b4d5",
+          "size": 54
+        },
+        {
+          "path": "mods/modhub-demo-vecchio.txt",
+          "sha256": "302ad029f71f5e5d5f8c29a7803a43ed1a85e2c97660d0fa4bb93130d05d9551",
+          "size": 37
+        },
+        {
+          "path": "mods/modhub-demo.txt",
+          "sha256": "9cb2982b6dfe98903df4ad3f05e3472c110021a96c56fe756abb6ccd9c539bb4",
+          "size": 33
+        }
+      ],
+      "launch_profiles": []
+    },
+    "1.1.0": {
+      "date": "2026-10-06",
+      "changelog": "Aggiornato modhub-demo.txt, aggiunto modhub-demo-nuovo.txt, rimosso modhub-demo-vecchio.txt.",
+      "files": [
+        {
+          "path": "mods/modhub-demo-invariato.txt",
+          "sha256": "9b54dc84e9d9e1ff90571c49953ea0c28d5e74f511346650ea65ba508cf2b4d5",
+          "size": 54
+        },
+        {
+          "path": "mods/modhub-demo-nuovo.txt",
+          "sha256": "6a415546906c4cf45e9102a4e2c2caf4e4e1acd6c350e7b171a64d803b9fcae5",
+          "size": 30
+        },
+        {
+          "path": "mods/modhub-demo.txt",
+          "sha256": "56ac0c23a0b8162ccf78c90b2a8575a726f8f1364e8d928bf8038c3ed477f181",
+          "size": 33
+        }
+      ],
+      "launch_profiles": []
+    }
+  },
+  "id": "bt3-demo-mod",
+  "name": "Mod di prova (per vedere gli aggiornamenti)",
+  "author": "ModHub demo",
+  "game": "bt3-recomp",
+  "summary": "Installa solo file di testo innocui nella cartella mods, per provare installazione e aggiornamenti.",
+  "description": "Pacchetto dimostrativo: i file sono .txt, quindi il gioco li ignora. Installa la 1.0.0, poi premi Aggiorna per passare alla 1.1.0 e guarda che vengono scaricati solo i file cambiati.",
+  "latest": "1.1.0"
+}
