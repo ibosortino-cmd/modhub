@@ -1,0 +1,575 @@
+{
+ "emulators": [
+  {
+   "id": "pcsx2",
+   "aliases": [
+    "ps2",
+    "playstation2",
+    "sony"
+   ],
+   "name": "PCSX2",
+   "systems": [
+    "PlayStation 2"
+   ],
+   "site": "https://pcsx2.net/downloads",
+   "exe_names": [
+    "pcsx2-qt.exe",
+    "pcsx2-qtx64.exe",
+    "pcsx2-qtx64-avx2.exe",
+    "pcsx2.exe"
+   ],
+   "needs_bios": true,
+   "extensions": [
+    "iso",
+    "chd",
+    "bin",
+    "cue",
+    "cso",
+    "gz",
+    "elf"
+   ],
+   "args": [
+    "-batch",
+    "--",
+    "{rom}"
+   ],
+   "args_fullscreen": [
+    "-batch",
+    "-fullscreen",
+    "--",
+    "{rom}"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "PCSX2/pcsx2",
+    "asset": "-windows-x64-Qt\\.7z$"
+   },
+   "settings": "emu_settings/pcsx2.json"
+  },
+  {
+   "id": "duckstation",
+   "aliases": [
+    "ps1",
+    "psx",
+    "psone",
+    "playstation1",
+    "sony"
+   ],
+   "name": "DuckStation",
+   "systems": [
+    "PlayStation 1"
+   ],
+   "site": "https://www.duckstation.org/",
+   "exe_names": [
+    "duckstation-qt-x64-ReleaseLTCG.exe",
+    "duckstation-qt.exe"
+   ],
+   "needs_bios": true,
+   "extensions": [
+    "cue",
+    "chd",
+    "bin",
+    "iso",
+    "pbp",
+    "m3u",
+    "img"
+   ],
+   "args": [
+    "-batch",
+    "--",
+    "{rom}"
+   ],
+   "args_fullscreen": [
+    "-batch",
+    "-fullscreen",
+    "--",
+    "{rom}"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "stenzek/duckstation",
+    "asset": "^duckstation-windows-x64-release\\.zip$"
+   }
+  },
+  {
+   "id": "rpcs3",
+   "aliases": [
+    "ps3",
+    "playstation3",
+    "sony"
+   ],
+   "name": "RPCS3",
+   "systems": [
+    "PlayStation 3"
+   ],
+   "site": "https://rpcs3.net/download",
+   "exe_names": [
+    "rpcs3.exe"
+   ],
+   "extensions": [
+    "bin",
+    "iso",
+    "self",
+    "elf"
+   ],
+   "args": [
+    "--no-gui",
+    "{rom}"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "RPCS3/rpcs3-binaries-win",
+    "asset": "_win64_msvc\\.7z$"
+   }
+  },
+  {
+   "id": "ppsspp",
+   "aliases": [
+    "psp",
+    "sony"
+   ],
+   "name": "PPSSPP",
+   "systems": [
+    "PSP"
+   ],
+   "site": "https://www.ppsspp.org/download",
+   "exe_names": [
+    "PPSSPPWindows64.exe",
+    "PPSSPPWindows.exe"
+   ],
+   "extensions": [
+    "iso",
+    "cso",
+    "pbp",
+    "elf",
+    "prx"
+   ],
+   "args": [
+    "{rom}"
+   ],
+   "args_fullscreen": [
+    "--fullscreen",
+    "{rom}"
+   ],
+   "install": {
+    "type": "page",
+    "page": "https://www.ppsspp.org/download/",
+    "hosts": [
+     "www.ppsspp.org"
+    ],
+    "pattern": "(?P<url>https://www\\.ppsspp\\.org/files/(?P<version>\\d+_\\d+_\\d+)/ppsspp_win\\.zip)"
+   }
+  },
+  {
+   "id": "dolphin",
+   "aliases": [
+    "wii",
+    "gc",
+    "ngc",
+    "gamecube",
+    "nintendo"
+   ],
+   "name": "Dolphin",
+   "systems": [
+    "GameCube",
+    "Wii"
+   ],
+   "site": "https://dolphin-emu.org/download/",
+   "exe_names": [
+    "Dolphin.exe"
+   ],
+   "extensions": [
+    "iso",
+    "gcm",
+    "wbfs",
+    "rvz",
+    "ciso",
+    "gcz",
+    "wad",
+    "dol",
+    "elf",
+    "tgc"
+   ],
+   "args": [
+    "-b",
+    "-e",
+    "{rom}"
+   ],
+   "args_fullscreen": [
+    "-b",
+    "-C",
+    "Dolphin.Display.Fullscreen=True",
+    "-e",
+    "{rom}"
+   ],
+   "install": {
+    "type": "json",
+    "url": "https://dolphin-emu.org/update/latest/beta",
+    "system": "Windows x64",
+    "hosts": [
+     "dolphin-emu.org",
+     "dl.dolphin-emu.org"
+    ]
+   }
+  },
+  {
+   "id": "cemu",
+   "aliases": [
+    "wiiu",
+    "wii u",
+    "nintendo"
+   ],
+   "name": "Cemu",
+   "systems": [
+    "Wii U"
+   ],
+   "site": "https://cemu.info/",
+   "exe_names": [
+    "Cemu.exe"
+   ],
+   "extensions": [
+    "wud",
+    "wux",
+    "wua",
+    "rpx",
+    "elf"
+   ],
+   "args": [
+    "-g",
+    "{rom}"
+   ],
+   "args_fullscreen": [
+    "-g",
+    "{rom}",
+    "-f"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "cemu-project/Cemu",
+    "asset": "-windows-x64\\.zip$"
+   }
+  },
+  {
+   "id": "melonds",
+   "aliases": [
+    "ds",
+    "nds",
+    "dsi",
+    "nintendo"
+   ],
+   "name": "melonDS",
+   "systems": [
+    "Nintendo DS"
+   ],
+   "site": "https://melonds.kuribo64.net/downloads.php",
+   "exe_names": [
+    "melonDS.exe"
+   ],
+   "extensions": [
+    "nds",
+    "dsi",
+    "srl",
+    "ids"
+   ],
+   "args": [
+    "{rom}"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "melonDS-emu/melonDS",
+    "asset": "-windows-x86_64\\.zip$"
+   }
+  },
+  {
+   "id": "mgba",
+   "aliases": [
+    "gba",
+    "gb",
+    "gbc",
+    "nintendo"
+   ],
+   "name": "mGBA",
+   "systems": [
+    "Game Boy Advance",
+    "Game Boy",
+    "Game Boy Color"
+   ],
+   "site": "https://mgba.io/downloads.html",
+   "exe_names": [
+    "mGBA.exe"
+   ],
+   "extensions": [
+    "gba",
+    "gb",
+    "gbc",
+    "sgb",
+    "zip",
+    "7z"
+   ],
+   "args": [
+    "{rom}"
+   ],
+   "args_fullscreen": [
+    "-f",
+    "{rom}"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "mgba-emu/mgba",
+    "asset": "-win64\\.7z$"
+   }
+  },
+  {
+   "id": "project64",
+   "aliases": [
+    "n64",
+    "nintendo64",
+    "nintendo"
+   ],
+   "name": "Project64",
+   "systems": [
+    "Nintendo 64"
+   ],
+   "site": "https://www.pj64-emu.com/download/",
+   "exe_names": [
+    "Project64.exe"
+   ],
+   "extensions": [
+    "z64",
+    "n64",
+    "v64",
+    "zip",
+    "7z"
+   ],
+   "args": [
+    "{rom}"
+   ]
+  },
+  {
+   "id": "snes9x",
+   "aliases": [
+    "snes",
+    "sfc",
+    "nintendo"
+   ],
+   "name": "Snes9x",
+   "systems": [
+    "Super Nintendo"
+   ],
+   "site": "https://www.snes9x.com/downloads.php",
+   "exe_names": [
+    "snes9x-x64.exe",
+    "snes9x.exe"
+   ],
+   "extensions": [
+    "smc",
+    "sfc",
+    "swc",
+    "fig",
+    "zip"
+   ],
+   "args": [
+    "{rom}"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "snes9xgit/snes9x",
+    "asset": "-win32-x64\\.zip$"
+   }
+  },
+  {
+   "id": "mesen",
+   "aliases": [
+    "nes",
+    "famicom",
+    "snes",
+    "nintendo"
+   ],
+   "name": "Mesen",
+   "systems": [
+    "NES",
+    "Super Nintendo",
+    "Game Boy",
+    "PC Engine",
+    "Master System"
+   ],
+   "site": "https://www.mesen.ca/",
+   "exe_names": [
+    "Mesen.exe"
+   ],
+   "extensions": [
+    "nes",
+    "fds",
+    "sfc",
+    "smc",
+    "gb",
+    "gbc",
+    "pce",
+    "sms",
+    "gg",
+    "sg",
+    "zip"
+   ],
+   "args": [
+    "{rom}"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "SourMesen/Mesen2",
+    "asset": "_Windows\\.zip$"
+   }
+  },
+  {
+   "id": "flycast",
+   "aliases": [
+    "dc",
+    "naomi",
+    "sega"
+   ],
+   "name": "Flycast",
+   "systems": [
+    "Dreamcast",
+    "Naomi"
+   ],
+   "site": "https://github.com/flyinghead/flycast/releases",
+   "exe_names": [
+    "flycast.exe"
+   ],
+   "needs_bios": true,
+   "extensions": [
+    "gdi",
+    "cdi",
+    "chd",
+    "cue",
+    "lst",
+    "zip"
+   ],
+   "args": [
+    "{rom}"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "flyinghead/flycast",
+    "asset": "^flycast-win64-.*\\.zip$"
+   }
+  },
+  {
+   "id": "redream",
+   "aliases": [
+    "dc",
+    "sega"
+   ],
+   "name": "Redream",
+   "systems": [
+    "Dreamcast"
+   ],
+   "site": "https://redream.io/download",
+   "exe_names": [
+    "redream.exe"
+   ],
+   "extensions": [
+    "gdi",
+    "cdi",
+    "chd",
+    "cue"
+   ],
+   "args": [
+    "{rom}"
+   ],
+   "install": {
+    "type": "page",
+    "page": "https://redream.io/download",
+    "hosts": [
+     "redream.io"
+    ],
+    "pattern": "(?P<url>/download/redream\\.x86_64-windows-v(?P<version>\\d+\\.\\d+\\.\\d+)\\.zip)"
+   }
+  },
+  {
+   "id": "xenia",
+   "aliases": [
+    "x360",
+    "xbox360",
+    "microsoft"
+   ],
+   "name": "Xenia",
+   "systems": [
+    "Xbox 360"
+   ],
+   "site": "https://xenia.jp/",
+   "exe_names": [
+    "xenia_canary.exe",
+    "xenia.exe"
+   ],
+   "extensions": [
+    "iso",
+    "xex",
+    "zar"
+   ],
+   "args": [
+    "{rom}"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "xenia-canary/xenia-canary-releases",
+    "asset": "^xenia_canary_windows.*\\.zip$"
+   }
+  },
+  {
+   "id": "xemu",
+   "aliases": [
+    "xbox",
+    "microsoft"
+   ],
+   "name": "xemu",
+   "systems": [
+    "Xbox"
+   ],
+   "site": "https://xemu.app/",
+   "exe_names": [
+    "xemu.exe"
+   ],
+   "needs_bios": true,
+   "extensions": [
+    "iso"
+   ],
+   "args": [
+    "-dvd_path",
+    "{rom}"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "xemu-project/xemu",
+    "asset": "^xemu-win-x86_64-release\\.zip$"
+   }
+  },
+  {
+   "id": "stella",
+   "aliases": [
+    "2600",
+    "atari"
+   ],
+   "name": "Stella",
+   "systems": [
+    "Atari 2600"
+   ],
+   "site": "https://stella-emu.github.io/downloads.html",
+   "exe_names": [
+    "Stella.exe"
+   ],
+   "extensions": [
+    "a26",
+    "bin",
+    "zip"
+   ],
+   "args": [
+    "{rom}"
+   ],
+   "install": {
+    "type": "github",
+    "repo": "stella-emu/stella",
+    "asset": "windows\\.zip$"
+   }
+  }
+ ]
+}
