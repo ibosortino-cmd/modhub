@@ -1,0 +1,640 @@
+{
+  "title": "PCSX2 · motore PlayStation 2",
+  "file": "inis/PCSX2.ini",
+  "format": "ini",
+  "roots": [
+    "portable:",
+    "{documents}/PCSX2"
+  ],
+  "live": {
+    "section": "Hotkeys",
+    "logArg": "-logfile",
+    "keys": {
+      "IncreaseUpscaleMultiplier": "F13",
+      "DecreaseUpscaleMultiplier": "F14",
+      "CycleBlendingAccuracy": "F15",
+      "IncreaseVolume": "F16",
+      "DecreaseVolume": "F17",
+      "CycleAspectRatio": "F18",
+      "ToggleMipmapMode": "F19",
+      "CycleTVShader": "F20",
+      "CycleInterlaceMode": "F21"
+    },
+    "controls": [
+      {
+        "id": "resolution",
+        "label": "Risoluzione",
+        "type": "stepper",
+        "up": "IncreaseUpscaleMultiplier",
+        "down": "DecreaseUpscaleMultiplier",
+        "read": "(\\d+)x",
+        "unit": "x",
+        "min": 1,
+        "max": 12,
+        "key": "EmuCore/GS.upscale_multiplier",
+        "hint": "Più alta = più nitido",
+        "osd": "UpscaleMultiplierChanged",
+        "default": 1,
+        "fallback": 1
+      },
+      {
+        "id": "blending",
+        "label": "Precisione dei colori",
+        "type": "cycle",
+        "press": "CycleBlendingAccuracy",
+        "read": "\\b(Minimum|Basic|Medium|High|Full|Maximum)\\b",
+        "values": [
+          "Minimum",
+          "Basic",
+          "Medium",
+          "High",
+          "Full",
+          "Maximum"
+        ],
+        "labels": [
+          "Minima",
+          "Base",
+          "Media",
+          "Alta",
+          "Completa",
+          "Massima"
+        ],
+        "key": "EmuCore/GS.accurate_blending_unit",
+        "hint": "Effetti di luce più fedeli",
+        "osd": "CycleBlendingAccuracy",
+        "default": 1
+      },
+      {
+        "id": "volume",
+        "label": "Volume",
+        "type": "stepper",
+        "up": "IncreaseVolume",
+        "down": "DecreaseVolume",
+        "read": "(\\d+)\\s*%",
+        "unit": "%",
+        "min": 0,
+        "max": 200,
+        "key": "SPU2/Output.StandardVolume",
+        "noOptimizer": true,
+        "osd": "VolumeChanged",
+        "default": 100
+      },
+      {
+        "id": "aspect",
+        "label": "Formato immagine",
+        "type": "cycle",
+        "press": "CycleAspectRatio",
+        "read": "'([^']+)'\\.?\\s*$",
+        "key": "EmuCore/GS.AspectRatio",
+        "osd": "CycleAspectRatio"
+      },
+      {
+        "id": "mipmap",
+        "label": "Mipmap",
+        "type": "toggle",
+        "press": "ToggleMipmapMode",
+        "key": "EmuCore/GS.hw_mipmap",
+        "osd": "ToggleMipmapMode",
+        "default": true
+      },
+      {
+        "id": "tvshader",
+        "label": "Filtro TV",
+        "type": "cycle",
+        "press": "CycleTVShader",
+        "read": "'([^']+)'\\.?\\s*$",
+        "extra": true,
+        "osd": "CycleTVShader"
+      },
+      {
+        "id": "interlace",
+        "label": "Deinterlaccia",
+        "type": "cycle",
+        "press": "CycleInterlaceMode",
+        "read": "'([^']+)'\\.?\\s*$",
+        "extra": true,
+        "osd": "CycleInterlaceMode"
+      }
+    ]
+  },
+  "optimizer": {
+    "byTier": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "levels": [
+      {
+        "name": "Prestazioni massime",
+        "desc": "Per PC datati: risoluzione originale della PS2 e filtri al minimo.",
+        "values": {
+          "EmuCore/GS.upscale_multiplier": 1,
+          "EmuCore/GS.MaxAnisotropy": 0,
+          "EmuCore/GS.accurate_blending_unit": 0,
+          "EmuCore/GS.texture_preloading": 0
+        }
+      },
+      {
+        "name": "Prestazioni",
+        "desc": "Risoluzione originale con qualità normale delle texture.",
+        "values": {
+          "EmuCore/GS.upscale_multiplier": 1,
+          "EmuCore/GS.MaxAnisotropy": 0,
+          "EmuCore/GS.accurate_blending_unit": 1,
+          "EmuCore/GS.texture_preloading": 1
+        }
+      },
+      {
+        "name": "Bilanciato",
+        "desc": "Risoluzione doppia (circa 720p): più nitido senza pesare molto.",
+        "values": {
+          "EmuCore/GS.upscale_multiplier": 2,
+          "EmuCore/GS.MaxAnisotropy": 2,
+          "EmuCore/GS.accurate_blending_unit": 1,
+          "EmuCore/GS.texture_preloading": 2
+        }
+      },
+      {
+        "name": "Qualità",
+        "desc": "Risoluzione tripla (circa 1080p) con texture più pulite.",
+        "values": {
+          "EmuCore/GS.upscale_multiplier": 3,
+          "EmuCore/GS.MaxAnisotropy": 8,
+          "EmuCore/GS.accurate_blending_unit": 2,
+          "EmuCore/GS.texture_preloading": 2
+        }
+      },
+      {
+        "name": "Qualità massima",
+        "desc": "Risoluzione quadrupla (circa 1440p) e fusione dei colori accurata: per PC potenti.",
+        "values": {
+          "EmuCore/GS.upscale_multiplier": 4,
+          "EmuCore/GS.MaxAnisotropy": 16,
+          "EmuCore/GS.accurate_blending_unit": 3,
+          "EmuCore/GS.texture_preloading": 2
+        }
+      }
+    ]
+  },
+  "groups": [
+    {
+      "id": "graphics",
+      "title": "Grafica",
+      "icon": "sparkles",
+      "sections": [
+        {
+          "title": "Risoluzione e immagine",
+          "fields": [
+            {
+              "key": "EmuCore/GS.upscale_multiplier",
+              "label": "Risoluzione di rendering",
+              "desc": "Più alta significa immagine più nitida, ma serve una scheda video più potente.",
+              "type": "select",
+              "default": 1,
+              "options": [
+                {
+                  "value": 1,
+                  "label": "Originale PS2 (1x)"
+                },
+                {
+                  "value": 2,
+                  "label": "2x · circa 720p"
+                },
+                {
+                  "value": 3,
+                  "label": "3x · circa 1080p"
+                },
+                {
+                  "value": 4,
+                  "label": "4x · circa 1440p"
+                },
+                {
+                  "value": 5,
+                  "label": "5x · circa 1800p"
+                },
+                {
+                  "value": 6,
+                  "label": "6x · circa 4K"
+                },
+                {
+                  "value": 8,
+                  "label": "8x · circa 5K"
+                }
+              ]
+            },
+            {
+              "key": "EmuCore/GS.AspectRatio",
+              "label": "Formato dell'immagine",
+              "desc": "Con 16:9 e le patch widescreen l'immagine non risulta stirata.",
+              "type": "select",
+              "default": "4:3",
+              "options": [
+                {
+                  "value": "Stretch",
+                  "label": "Riempi lo schermo (stira)"
+                },
+                {
+                  "value": "4:3",
+                  "label": "4:3 (originale)"
+                },
+                {
+                  "value": "16:9",
+                  "label": "16:9 (widescreen)"
+                }
+              ]
+            },
+            {
+              "key": "EmuCore.EnableWideScreenPatches",
+              "label": "Patch widescreen",
+              "desc": "Allarga davvero la scena nei giochi che lo supportano, senza deformarla.",
+              "type": "toggle",
+              "default": false
+            },
+            {
+              "key": "EmuCore.EnableNoInterlacingPatches",
+              "label": "Patch anti-interlacciamento",
+              "desc": "Toglie lo sfarfallio dell'interlacciato in alcuni giochi.",
+              "type": "toggle",
+              "default": false
+            }
+          ]
+        },
+        {
+          "title": "Qualità delle texture",
+          "fields": [
+            {
+              "key": "EmuCore/GS.filter",
+              "label": "Filtro delle texture",
+              "desc": "Come vengono ammorbidite le texture.",
+              "type": "select",
+              "default": 2,
+              "options": [
+                {
+                  "value": 0,
+                  "label": "Nessuno (pixel netti)"
+                },
+                {
+                  "value": 1,
+                  "label": "Bilineare forzato"
+                },
+                {
+                  "value": 2,
+                  "label": "Bilineare come la PS2"
+                },
+                {
+                  "value": 3,
+                  "label": "Bilineare forzato, esclusi gli sprite"
+                }
+              ]
+            },
+            {
+              "key": "EmuCore/GS.MaxAnisotropy",
+              "label": "Filtro anisotropico",
+              "desc": "Rende nitide le texture viste di sbieco, come il terreno.",
+              "type": "select",
+              "default": 0,
+              "options": [
+                {
+                  "value": 0,
+                  "label": "Spento"
+                },
+                {
+                  "value": 2,
+                  "label": "2x"
+                },
+                {
+                  "value": 4,
+                  "label": "4x"
+                },
+                {
+                  "value": 8,
+                  "label": "8x"
+                },
+                {
+                  "value": 16,
+                  "label": "16x"
+                }
+              ]
+            },
+            {
+              "key": "EmuCore/GS.accurate_blending_unit",
+              "label": "Fusione dei colori",
+              "desc": "Più alta = effetti di luce più fedeli, ma più pesanti.",
+              "type": "select",
+              "default": 1,
+              "options": [
+                {
+                  "value": 0,
+                  "label": "Minima"
+                },
+                {
+                  "value": 1,
+                  "label": "Base"
+                },
+                {
+                  "value": 2,
+                  "label": "Media"
+                },
+                {
+                  "value": 3,
+                  "label": "Alta"
+                },
+                {
+                  "value": 4,
+                  "label": "Completa"
+                },
+                {
+                  "value": 5,
+                  "label": "Massima"
+                }
+              ]
+            },
+            {
+              "key": "EmuCore/GS.texture_preloading",
+              "label": "Precaricamento delle texture",
+              "desc": "Carica le texture in anticipo per evitare scatti.",
+              "type": "select",
+              "default": 2,
+              "options": [
+                {
+                  "value": 0,
+                  "label": "Nessuno"
+                },
+                {
+                  "value": 1,
+                  "label": "Parziale"
+                },
+                {
+                  "value": 2,
+                  "label": "Completo"
+                }
+              ]
+            },
+            {
+              "key": "EmuCore/GS.hw_mipmap",
+              "label": "Mipmap",
+              "desc": "Texture più pulite a distanza.",
+              "type": "toggle",
+              "default": true
+            }
+          ]
+        },
+        {
+          "title": "Miglioramenti dell'immagine",
+          "fields": [
+            {
+              "key": "EmuCore/GS.fxaa",
+              "label": "FXAA",
+              "desc": "Ammorbidisce i bordi seghettati con poco sforzo.",
+              "type": "toggle",
+              "default": false
+            },
+            {
+              "key": "EmuCore/GS.CASMode",
+              "label": "Nitidezza (CAS)",
+              "desc": "Rende l'immagine più definita.",
+              "type": "select",
+              "default": 0,
+              "options": [
+                {
+                  "value": 0,
+                  "label": "Spenta"
+                },
+                {
+                  "value": 1,
+                  "label": "Solo nitidezza"
+                },
+                {
+                  "value": 2,
+                  "label": "Nitidezza e ridimensionamento"
+                }
+              ]
+            },
+            {
+              "key": "EmuCore/GS.CASSharpness",
+              "label": "Intensità della nitidezza",
+              "type": "slider",
+              "int": true,
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "%",
+              "default": 50
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "screen",
+      "title": "Schermo e prestazioni",
+      "icon": "monitor",
+      "sections": [
+        {
+          "title": "Finestra",
+          "fields": [
+            {
+              "key": "UI.StartFullscreen",
+              "label": "Avvia a schermo intero",
+              "desc": "Il gioco parte subito a tutto schermo.",
+              "type": "toggle",
+              "default": false
+            },
+            {
+              "key": "EmuCore/GS.VsyncEnable",
+              "label": "V-Sync",
+              "desc": "Sincronizza con lo schermo: toglie lo strappo dell'immagine, ma può aggiungere un piccolo ritardo.",
+              "type": "toggle",
+              "default": false
+            }
+          ]
+        },
+        {
+          "title": "Velocità",
+          "fields": [
+            {
+              "key": "EmuCore/Speedhacks.vuThread",
+              "label": "VU1 su un altro core",
+              "desc": "Usa più core del processore: di solito aumenta le prestazioni.",
+              "type": "toggle",
+              "default": true
+            },
+            {
+              "key": "EmuCore/Speedhacks.EECycleRate",
+              "label": "Velocità del processore PS2",
+              "desc": "Scegli un valore più basso solo se il PC fatica a stare a 60 FPS.",
+              "type": "select",
+              "default": 0,
+              "options": [
+                {
+                  "value": -3,
+                  "label": "50% (più leggero)"
+                },
+                {
+                  "value": -2,
+                  "label": "60%"
+                },
+                {
+                  "value": -1,
+                  "label": "75%"
+                },
+                {
+                  "value": 0,
+                  "label": "100% (normale)"
+                },
+                {
+                  "value": 1,
+                  "label": "130%"
+                },
+                {
+                  "value": 2,
+                  "label": "180%"
+                },
+                {
+                  "value": 3,
+                  "label": "300%"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Informazioni sullo schermo",
+          "fields": [
+            {
+              "key": "EmuCore/GS.OsdShowFPS",
+              "label": "Mostra gli FPS",
+              "type": "toggle",
+              "default": false
+            },
+            {
+              "key": "EmuCore/GS.OsdShowResolution",
+              "label": "Mostra la risoluzione",
+              "type": "toggle",
+              "default": false
+            },
+            {
+              "key": "EmuCore/GS.OsdShowCPU",
+              "label": "Mostra l'uso del processore",
+              "type": "toggle",
+              "default": false
+            },
+            {
+              "key": "EmuCore/GS.OsdShowGPU",
+              "label": "Mostra l'uso della scheda video",
+              "type": "toggle",
+              "default": false
+            },
+            {
+              "key": "EmuCore/GS.Adapter",
+              "label": "Scheda video in uso",
+              "type": "info"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "audio",
+      "title": "Audio",
+      "icon": "volume",
+      "sections": [
+        {
+          "title": "Volume",
+          "fields": [
+            {
+              "key": "SPU2/Output.StandardVolume",
+              "label": "Volume",
+              "desc": "Volume dell'audio del gioco.",
+              "type": "slider",
+              "int": true,
+              "min": 0,
+              "max": 100,
+              "step": 1,
+              "unit": "%",
+              "default": 100
+            },
+            {
+              "key": "SPU2/Output.OutputMuted",
+              "label": "Silenzia l'audio",
+              "type": "toggle",
+              "default": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "advanced",
+      "title": "Avanzate",
+      "icon": "sliders",
+      "sections": [
+        {
+          "title": "Motore grafico",
+          "note": "Cambia il motore solo se hai problemi di grafica: Direct3D 11 va bene per quasi tutti.",
+          "fields": [
+            {
+              "key": "EmuCore/GS.Renderer",
+              "label": "Motore grafico",
+              "type": "select",
+              "default": -1,
+              "options": [
+                {
+                  "value": -1,
+                  "label": "Automatico"
+                },
+                {
+                  "value": 3,
+                  "label": "Direct3D 11"
+                },
+                {
+                  "value": 15,
+                  "label": "Direct3D 12"
+                },
+                {
+                  "value": 14,
+                  "label": "Vulkan"
+                },
+                {
+                  "value": 12,
+                  "label": "OpenGL"
+                },
+                {
+                  "value": 13,
+                  "label": "Software (lento)"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Avvio e trucchi",
+          "fields": [
+            {
+              "key": "EmuCore.EnableFastBoot",
+              "label": "Avvio veloce",
+              "desc": "Salta il logo della PS2 all'avvio del gioco.",
+              "type": "toggle",
+              "default": true
+            },
+            {
+              "key": "EmuCore.EnableCheats",
+              "label": "Consenti i trucchi",
+              "desc": "Abilita i trucchi (cheat) se presenti.",
+              "type": "toggle",
+              "default": false
+            },
+            {
+              "key": "UI.ConfirmShutdown",
+              "label": "Chiedi conferma prima di chiudere",
+              "type": "toggle",
+              "default": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
