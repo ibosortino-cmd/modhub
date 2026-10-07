@@ -1,0 +1,34 @@
+{
+  "name": "ModHub - catalogo demo",
+  "games": {
+    "bt3-recomp": {
+      "name": "Dragon Ball Z: Budokai Tenkaichi 3 (PC Recompiled)",
+      "exe": "Dragon Ball Z Budokai Tenkaichi 3 - Recompiled.exe",
+      "settings": "games/bt3-recomp/settings.json",
+      "version_file": {
+        "file": "LEGGIMI.txt",
+        "regex": "Versione sorgente:\\s*(\\w{7})"
+      }
+    }
+  },
+  "projects": [
+    {
+      "id": "bt3-graphics-8x",
+      "name": "Grafica 8x (profilo di avvio)",
+      "author": "ModHub demo",
+      "game": "bt3-recomp",
+      "summary": "Avvia BT3 con il rendering a risoluzione 8x, come \"Avvia BT3 8x.cmd\".",
+      "latest": "1.0.0",
+      "manifest": "projects/bt3-graphics-8x/manifest.json"
+    },
+    {
+      "id": "bt3-demo-mod",
+      "name": "Mod di prova (per vedere gli aggiornamenti)",
+      "author": "ModHub demo",
+      "game": "bt3-recomp",
+      "summary": "Installa solo file di testo innocui nella cartella mods, per provare installazione e aggiornamenti.",
+      "latest": "1.1.0",
+      "manifest": "projects/bt3-demo-mod/manifest.json"
+    }
+  ]
+}
