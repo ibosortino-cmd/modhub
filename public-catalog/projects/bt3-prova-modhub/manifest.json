@@ -1,0 +1,31 @@
+{
+  "versions": {
+    "1.0.0": {
+      "date": "2026-10-07",
+      "changelog": "Prima versione.",
+      "files": [
+        {
+          "path": "mods/modhub-prova/LEGGIMI.txt",
+          "sha256": "c20e59a758c0a7df4bb9ede7c4714f9e4ccde57b59ab93f394621446ddcdc120",
+          "size": 408
+        }
+      ],
+      "launch_profiles": [
+        {
+          "name": "Avvio diretto",
+          "env": {
+            "PS2X_FE_DELAY_MS": "1",
+            "PS2X_FE_AUTOPLAY": "1"
+          }
+        }
+      ]
+    }
+  },
+  "id": "bt3-prova-modhub",
+  "name": "Prova ModHub: Avvio diretto",
+  "author": "ModHub",
+  "game": "bt3-recomp",
+  "summary": "Mod di prova: aggiunge il profilo \"Avvio diretto\" che salta il menu iniziale e porta subito in partita.",
+  "description": "Serve a provare il catalogo pubblico di ModHub (download, installazione, aggiornamenti). Aggiunge al pulsante GIOCA il profilo \"Avvio diretto\" (variabili PS2X_FE_DELAY_MS e PS2X_FE_AUTOPLAY del port: saltano la schermata con PLAY) e copia un file di testo in mods\\modhub-prova. Non tocca i file del gioco né le impostazioni; si toglie con Disinstalla.",
+  "latest": "1.0.0"
+}
