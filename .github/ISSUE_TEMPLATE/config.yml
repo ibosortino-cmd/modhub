@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Guida di ModHub (PDF)
+    url: https://github.com/ibosortino-cmd/modhub/releases
+    about: Prima di scrivere, dai un'occhiata alla guida illustrata nella pagina delle release.
